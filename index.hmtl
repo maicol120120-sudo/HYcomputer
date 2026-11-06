@@ -1,0 +1,881 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYcomputer | Tecnología y Gaming</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --morado: #6d28d9;
+  --oscuro: #100b21;
+  --amarillo: #facc15;
+  --fondo: #f5f3fa;
+  --texto: #211a35;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+header {
+  background: var(--oscuro);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px #0003;
+}
+
+.topbar {
+  background: var(--amarillo);
+  color: #21113b;
+  text-align: center;
+  padding: 9px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.header-main {
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: Orbitron, sans-serif;
+  font-size: 27px;
+  font-weight: 900;
+  color: white;
+  text-decoration: none;
+  letter-spacing: -1px;
+  text-shadow: 0 0 15px #a855f788;
+}
+
+.logo span { color: var(--amarillo); }
+
+.search {
+  display: flex;
+  flex: 1;
+  max-width: 520px;
+}
+
+.search input {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 9px 0 0 9px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search button {
+  border: none;
+  padding: 0 22px;
+  background: var(--amarillo);
+  font-weight: 800;
+  cursor: pointer;
+  border-radius: 0 9px 9px 0;
+}
+
+.cart-btn {
+  border: 1px solid #ffffff40;
+  background: #ffffff12;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+nav {
+  background: #271346;
+}
+
+.nav-inner {
+  max-width: 1250px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+nav a, .dropdown-btn {
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  display: block;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+nav a:hover, .dropdown:hover .dropdown-btn {
+  background: var(--morado);
+  color: var(--amarillo);
+}
+
+.dropdown { position: relative; }
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 210px;
+  box-shadow: 0 12px 30px #0003;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  z-index: 200;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #281b42;
+  padding: 13px 18px;
+}
+
+.dropdown-content a:hover {
+  background: #f3e8ff;
+  color: var(--morado);
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 80% 40%, #7e22ce90, transparent 40%),
+    linear-gradient(120deg, #12091f, #32115c);
+  color: white;
+  padding: 85px 24px;
+}
+
+.hero-inner {
+  max-width: 1250px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero h1 {
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(30px, 4vw, 53px);
+  line-height: 1.25;
+  margin: 15px 0;
+}
+
+.hero h1 span { color: var(--amarillo); }
+
+.hero p {
+  color: #d9cde8;
+  line-height: 1.8;
+  max-width: 500px;
+}
+
+.hero img {
+  width: 100%;
+  max-height: 370px;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 40px #a855f766);
+  animation: flotar 4s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-13px); }
+}
+
+.btn {
+  background: var(--amarillo);
+  color: #21113b;
+  border: 0;
+  padding: 14px 24px;
+  border-radius: 9px;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: .25s;
+}
+
+.btn:hover {
+  background: #ffe45e;
+  transform: translateY(-3px);
+}
+
+.container {
+  max-width: 1250px;
+  margin: auto;
+  padding: 55px 20px;
+}
+
+.section-title {
+  font-family: Orbitron, sans-serif;
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.section-title span { color: var(--morado); }
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.category {
+  background: white;
+  border: 1px solid #e9e3f1;
+  padding: 25px 15px;
+  border-radius: 13px;
+  text-align: center;
+  cursor: pointer;
+  transition: .3s;
+  font-weight: 800;
+}
+
+.category:hover {
+  transform: translateY(-5px);
+  border-color: var(--morado);
+  box-shadow: 0 10px 25px #6d28d920;
+}
+
+.category .emoji {
+  font-size: 35px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.toolbar select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.product {
+  background: white;
+  border: 1px solid #e9e5f0;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: .3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.product:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 35px #32115c22;
+  border-color: #a78bfa;
+}
+
+.product-image {
+  height: 215px;
+  padding: 18px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: .3s;
+}
+
+.product:hover img { transform: scale(1.06); }
+
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--amarillo);
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 5px;
+}
+
+.product-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-category {
+  color: #7c3aed;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.product h3 {
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 67px;
+}
+
+.price {
+  color: var(--morado);
+  font-size: 23px;
+  font-weight: 900;
+  margin: 10px 0 18px;
+}
+
+.product .btn {
+  width: 100%;
+  margin-top: auto;
+}
+
+.benefits {
+  background: #24103e;
+  color: white;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  text-align: center;
+}
+
+.benefits h3 { color: var(--amarillo); }
+
+.benefits p {
+  color: #cbb9df;
+  line-height: 1.7;
+}
+
+.about {
+  background: white;
+  border-radius: 18px;
+  padding: 35px;
+  line-height: 1.9;
+}
+
+footer {
+  background: #100b21;
+  color: white;
+  padding: 45px 20px;
+  text-align: center;
+}
+
+footer p { color: #b8aaca; }
+
+.cart-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: min(410px, 100%);
+  height: 100vh;
+  background: white;
+  z-index: 500;
+  box-shadow: -10px 0 40px #0004;
+  transform: translateX(105%);
+  transition: .3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-panel.open { transform: translateX(0); }
+
+.cart-header {
+  background: #24103e;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-header button {
+  background: transparent;
+  color: white;
+  border: 0;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.cart-items {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.cart-item {
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.cart-item button {
+  border: 0;
+  background: #f3e8ff;
+  padding: 7px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cart-footer {
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+.cart-footer .btn { width: 100%; }
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #0009;
+  z-index: 400;
+}
+
+.overlay.open { display: block; }
+
+@media(max-width: 900px) {
+  .products { grid-template-columns: repeat(2, 1fr); }
+  .categories { grid-template-columns: repeat(2, 1fr); }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero img { max-height: 250px; }
+}
+
+@media(max-width: 600px) {
+  .header-main { flex-wrap: wrap; gap: 15px; }
+  .logo { font-size: 22px; }
+  .search { order: 3; flex-basis: 100%; }
+  .products { gap: 10px; }
+  .product-image { height: 155px; }
+  .product-info { padding: 12px; }
+  .product h3 { font-size: 12px; min-height: 75px; }
+  .price { font-size: 18px; }
+  .section-title { font-size: 19px; }
+  .hero { padding: 45px 20px; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  nav a, .dropdown-btn { padding: 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    ⚡ TECNOLOGÍA Y GAMING | ENVÍOS A TODO EL PERÚ 🇵🇪
+  </div>
+
+  <div class="header-main">
+    <a class="logo" href="#">
+      HY<span>COMPUTER</span>
+    </a>
+
+    <div class="search">
+      <input id="search" placeholder="Buscar laptops, procesadores, tarjetas gráficas...">
+      <button onclick="renderProducts()">🔍</button>
+    </div>
+
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒 Carrito (<span id="cartCount">0</span>)
+    </button>
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#">Inicio</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">Productos ▾</button>
+        <div class="dropdown-content">
+          <a href="#catalogo" onclick="filterCategory('Todos')">Todos</a>
+          <a href="#catalogo" onclick="filterCategory('Procesadores')">Procesadores</a>
+          <a href="#catalogo" onclick="filterCategory('Tarjetas gráficas')">Tarjetas gráficas</a>
+          <a href="#catalogo" onclick="filterCategory('Memorias')">Memorias RAM</a>
+          <a href="#catalogo" onclick="filterCategory('Almacenamiento')">Almacenamiento</a>
+          <a href="#catalogo" onclick="filterCategory('Periféricos')">Periféricos</a>
+        </div>
+      </div>
+      <a href="#catalogo">Ofertas</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p style="color:#facc15;font-weight:800">
+        🚀 BIENVENIDO A HYCOMPUTER
+      </p>
+      <h1>
+        POTENCIA TU <span>MUNDO DIGITAL</span>
+      </h1>
+      <p>
+        Descubre componentes de alto rendimiento,
+        accesorios gaming y tecnología para llevar
+        tu experiencia al siguiente nivel.
+      </p>
+      <a class="btn" href="#catalogo">EXPLORAR PRODUCTOS →</a>
+    </div>
+
+    <img
+      src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=900"
+      alt="Computadora gaming"
+    >
+  </div>
+</section>
+
+<section class="container">
+  <h2 class="section-title">EXPLORA POR <span>CATEGORÍAS</span></h2>
+  <div class="categories">
+    <div class="category" onclick="filterCategory('Procesadores')">
+      <span class="emoji">🧠</span>Procesadores
+    </div>
+    <div class="category" onclick="filterCategory('Tarjetas gráficas')">
+      <span class="emoji">🎮</span>Tarjetas gráficas
+    </div>
+    <div class="category" onclick="filterCategory('Memorias')">
+      <span class="emoji">💾</span>Memorias RAM
+    </div>
+    <div class="category" onclick="filterCategory('Periféricos')">
+      <span class="emoji">⌨️</span>Periféricos
+    </div>
+  </div>
+</section>
+
+<section class="container" id="catalogo">
+  <h2 class="section-title">NUESTROS <span>PRODUCTOS</span></h2>
+
+  <div class="toolbar">
+    <span id="results">Productos disponibles</span>
+    <select id="sort" onchange="renderProducts()">
+      <option value="default">Orden predeterminado</option>
+      <option value="low">Menor precio</option>
+      <option value="high">Mayor precio</option>
+      <option value="name">Nombre A-Z</option>
+    </select>
+  </div>
+
+  <div class="products" id="products"></div>
+</section>
+
+<section class="benefits">
+  <div class="container">
+    <div class="benefits-grid">
+      <div>
+        <h2>🚚</h2>
+        <h3>ENVÍOS NACIONALES</h3>
+        <p>Atención para clientes de Lima y provincias.</p>
+      </div>
+      <div>
+        <h2>🛡️</h2>
+        <h3>CALIDAD TECNOLÓGICA</h3>
+        <p>Componentes y accesorios de marcas reconocidas.</p>
+      </div>
+      <div>
+        <h2>💬</h2>
+        <h3>ATENCIÓN PERSONALIZADA</h3>
+        <p>Asesoramiento para elegir tu próxima actualización.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container" id="nosotros">
+  <div class="about">
+    <h2 class="section-title">SOBRE <span>HYCOMPUTER</span></h2>
+    <p>
+      HYcomputer es un proyecto de tienda tecnológica
+      enfocado en computadoras, componentes y accesorios gaming.
+      Nuestro objetivo es ofrecer una experiencia de compra
+      moderna, sencilla y accesible para usuarios de todo el Perú.
+    </p>
+    <p>
+      Esta página es una demostración académica de comercio
+      electrónico desarrollada con HTML, CSS y JavaScript.
+    </p>
+  </div>
+</section>
+
+<footer id="contacto">
+  <a class="logo" href="#">HY<span>COMPUTER</span></a>
+  <p>Tecnología, innovación y potencia.</p>
+  <p>📍 Lima, Perú | Atención a nivel nacional</p>
+  <p>© 2026 HYcomputer. Proyecto académico.</p>
+</footer>
+
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <strong>🛒 Mi carrito</strong>
+    <button onclick="toggleCart()">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <h3>Total: <span id="cartTotal">S/ 0.00</span></h3>
+    <button class="btn" onclick="checkout()">FINALIZAR PEDIDO</button>
+  </div>
+</aside>
+
+<script>
+const products = [
+  {
+    id:1,
+    name:"Procesador AMD Ryzen 5 5600G",
+    category:"Procesadores",
+    price:599,
+    image:"https://m.media-amazon.com/images/I/61U6Z1pA3CL._AC_SL1000_.jpg"
+  },
+  {
+    id:2,
+    name:"Procesador Intel Core i5 12400F",
+    category:"Procesadores",
+    price:649,
+    image:"https://m.media-amazon.com/images/I/51A6V7rjNUL._AC_SL1000_.jpg"
+  },
+  {
+    id:3,
+    name:"Tarjeta gráfica GeForce RTX 4060",
+    category:"Tarjetas gráficas",
+    price:1499,
+    image:"https://m.media-amazon.com/images/I/71N6Z8dKfKL._AC_SL1500_.jpg"
+  },
+  {
+    id:4,
+    name:"Tarjeta gráfica GeForce RTX 3050",
+    category:"Tarjetas gráficas",
+    price:999,
+    image:"https://m.media-amazon.com/images/I/71ZqQ7XJ4VL._AC_SL1500_.jpg"
+  },
+  {
+    id:5,
+    name:"Memoria RAM Kingston Fury Beast 16GB DDR4",
+    category:"Memorias",
+    price:189,
+    image:"https://m.media-amazon.com/images/I/61uXihcspuL._AC_SL1000_.jpg"
+  },
+  {
+    id:6,
+    name:"Memoria RAM Corsair Vengeance RGB 32GB",
+    category:"Memorias",
+    price:399,
+    image:"https://m.media-amazon.com/images/I/61z3Q6cA4FL._AC_SL1000_.jpg"
+  },
+  {
+    id:7,
+    name:"SSD Kingston NV2 NVMe 1TB",
+    category:"Almacenamiento",
+    price:259,
+    image:"https://m.media-amazon.com/images/I/71L7+8v5m-L._AC_SL1500_.jpg"
+  },
+  {
+    id:8,
+    name:"SSD Samsung 980 PRO 1TB",
+    category:"Almacenamiento",
+    price:429,
+    image:"https://m.media-amazon.com/images/I/71KGZqf+UCL._AC_SL1500_.jpg"
+  },
+  {
+    id:9,
+    name:"Teclado mecánico Redragon Kumara K552",
+    category:"Periféricos",
+    price:169,
+    image:"https://m.media-amazon.com/images/I/71cngLX2xuL._AC_SL1500_.jpg"
+  },
+  {
+    id:10,
+    name:"Mouse Logitech G502 HERO",
+    category:"Periféricos",
+    price:189,
+    image:"https://m.media-amazon.com/images/I/61mpMH5TzkL._AC_SL1500_.jpg"
+  },
+  {
+    id:11,
+    name:"Audífonos HyperX Cloud II Gaming",
+    category:"Periféricos",
+    price:329,
+    image:"https://m.media-amazon.com/images/I/71g5MRbP52L._AC_SL1500_.jpg"
+  },
+  {
+    id:12,
+    name:"Mouse Logitech G203 LIGHTSYNC",
+    category:"Periféricos",
+    price:99,
+    image:"https://m.media-amazon.com/images/I/61UxfXTUyvL._AC_SL1500_.jpg"
+  }
+];
+
+let currentCategory = "Todos";
+let cart = [];
+
+const money = value => "S/ " + value.toFixed(2);
+
+function fallbackImage(category) {
+  const icons = {
+    "Procesadores":"🧠",
+    "Tarjetas gráficas":"🎮",
+    "Memorias":"💾",
+    "Almacenamiento":"💿",
+    "Periféricos":"⌨️"
+  };
+  const icon = icons[category] || "💻";
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300">
+    <rect width="400" height="300" fill="#f3e8ff"/>
+    <text x="200" y="160" text-anchor="middle" font-size="90">${icon}</text>
+    <text x="200" y="220" text-anchor="middle" font-family="Arial" font-size="18" fill="#6d28d9">HYcomputer</text>
+  </svg>`;
+  return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+}
+
+function renderProducts() {
+  const query = document.getElementById("search").value.toLowerCase();
+  const sort = document.getElementById("sort").value;
+
+  let list = products.filter(p =>
+    (currentCategory === "Todos" || p.category === currentCategory) &&
+    p.name.toLowerCase().includes(query)
+  );
+
+  if(sort === "low") list.sort((a,b) => a.price-b.price);
+  if(sort === "high") list.sort((a,b) => b.price-a.price);
+  if(sort === "name") list.sort((a,b) => a.name.localeCompare(b.name));
+
+  document.getElementById("results").textContent =
+    list.length + " productos encontrados";
+
+  document.getElementById("products").innerHTML = list.map(p => `
+    <article class="product">
+      <div class="product-image">
+        <span class="tag">DESTACADO</span>
+        <img src="${p.image}" alt="${p.name}" loading="lazy"
+          onerror="this.onerror=null;this.src=fallbackImage('${p.category}')">
+      </div>
+      <div class="product-info">
+        <span class="product-category">${p.category}</span>
+        <h3>${p.name}</h3>
+        <div class="price">${money(p.price)}</div>
+        <button class="btn" onclick="addCart(${p.id})">
+          🛒 AGREGAR AL CARRITO
+        </button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function filterCategory(category) {
+  currentCategory = category;
+  renderProducts();
+  document.getElementById("catalogo").scrollIntoView({behavior:"smooth"});
+}
+
+function addCart(id) {
+  const product = products.find(p => p.id === id);
+  const existing = cart.find(p => p.id === id);
+
+  if(existing) existing.qty++;
+  else cart.push({...product, qty:1});
+
+  renderCart();
+}
+
+function removeCart(id) {
+  cart = cart.filter(p => p.id !== id);
+  renderCart();
+}
+
+function changeQty(id, amount) {
+  const item = cart.find(p => p.id === id);
+  if(!item) return;
+  item.qty += amount;
+  if(item.qty <= 0) removeCart(id);
+  else renderCart();
+}
+
+function renderCart() {
+  const count = cart.reduce((sum,p) => sum+p.qty,0);
+  const total = cart.reduce((sum,p) => sum+p.price*p.qty,0);
+
+  document.getElementById("cartCount").textContent = count;
+  document.getElementById("cartTotal").textContent = money(total);
+
+  document.getElementById("cartItems").innerHTML =
+    cart.length ? cart.map(p => `
+      <div class="cart-item">
+        <strong>${p.name}</strong>
+        <p>${money(p.price)}</p>
+        <button onclick="changeQty(${p.id},-1)">−</button>
+        <span style="margin:0 12px">${p.qty}</span>
+        <button onclick="changeQty(${p.id},1)">+</button>
+        <button onclick="removeCart(${p.id})" style="float:right">
+          Eliminar
+        </button>
+      </div>
+    `).join("") : "<p>Tu carrito está vacío.</p>";
+}
+
+function toggleCart() {
+  document.getElementById("cartPanel").classList.toggle("open");
+  document.getElementById("overlay").classList.toggle("open");
+}
+
+function checkout() {
+  if(!cart.length) {
+    alert("Agrega productos al carrito.");
+    return;
+  }
+
+  const total = cart.reduce((sum,p) => sum+p.price*p.qty,0);
+  const detail = cart.map(p =>
+    `${p.qty} x ${p.name} - ${money(p.price*p.qty)}`
+  ).join("\n");
+
+  alert(
+    "HYcomputer - Resumen de pedido\n\n" +
+    detail + "\n\nTotal: " + money(total) +
+    "\n\nEsta es una simulación académica. No se ha realizado ninguna compra."
+  );
+}
+
+document.getElementById("search").addEventListener("input",renderProducts);
+
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>
